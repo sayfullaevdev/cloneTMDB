@@ -4,19 +4,21 @@ import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
 import { useSaved } from "@/providers/SavedProvider";
 import { Badge } from "./ui/badge";
+import GlobalTrailer from "./custom/GlobalTrailer";
+
 
 function Layout() {
-	const { saved } = useSaved();
+  const { saved } = useSaved();
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300 relative">
       <header className="flex items-center justify-between px-6 py-4 bg-card border-b border-border">
         <div className="flex items-center space-x-6">
           <Link to="/" className="text-2xl font-bold text-primary">
             IMDb
           </Link>
 
-          <nav className=" md:flex items-center space-x-4 text-sm">
+          <nav className="md:flex items-center space-x-4 text-sm">
             <Link to="/movies" className="hover:text-primary">
               Movies
             </Link>
@@ -28,7 +30,9 @@ function Layout() {
             </Link>
             <Link to="/saved" className="hover:text-primary flex items-center gap-1">
               Хочу посмотреть
-              <Badge className="bg-destructive text-destructive-foreground">{saved.length}</Badge>
+              <Badge className="bg-destructive text-destructive-foreground">
+                {saved.length}
+              </Badge>
             </Link>
           </nav>
         </div>
@@ -62,6 +66,9 @@ function Layout() {
       <footer className="py-6 text-center text-sm text-muted-foreground border-t border-border">
         © {new Date().getFullYear()} IMDb Clone — Created with ❤️ by Dotlabs
       </footer>
+
+
+      <GlobalTrailer />
     </div>
   );
 }

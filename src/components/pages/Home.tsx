@@ -19,7 +19,7 @@ const Home: React.FC = () => {
 
 	useEffect(() => {
 		axiosInstance
-			.get(`/discover/movie?page=${page}&language=ru`)
+			.get(`/discover/movie?page=${page}&language=ru?adult=true`)
 			.then((res) => {
 				setMovies(res.data.results);
 				setTotalPages(res.data.total_pages);
