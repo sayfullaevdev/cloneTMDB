@@ -2,15 +2,16 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-// import { BrowserRouter } from "react-router";
 import SavedProvider from "./providers/SavedProvider.tsx";
 import { SettingsProvider } from "./providers/SettingsProvider.tsx";
 import { UserProvider } from "./providers/UserProvider.tsx";
 import { TrailerProvider } from "./context/TrailerContext.tsx";
+import { Provider } from "react-redux";
+import { store } from "./store.ts";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		{/* <BrowserRouter> */}
+		<Provider store={store}>
 			<SavedProvider>
 				<UserProvider>
 					<SettingsProvider>
@@ -20,6 +21,6 @@ createRoot(document.getElementById("root")!).render(
 					</SettingsProvider>
 				</UserProvider>
 			</SavedProvider>
-		{/* </BrowserRouter> */}
+		</Provider>
 	</StrictMode>
 );
